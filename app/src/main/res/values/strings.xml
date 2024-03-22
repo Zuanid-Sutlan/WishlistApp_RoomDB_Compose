@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WishlistApp_RoomDB_Compose</string>
+    <string name="update_wish">Update Wish</string>
+    <string name="new_wish">Add new Wish</string>
+</resources>
