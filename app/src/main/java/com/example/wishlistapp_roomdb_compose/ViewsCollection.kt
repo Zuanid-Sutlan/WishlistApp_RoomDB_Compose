@@ -21,11 +21,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.example.wishlistapp_roomdb_compose.ui.components.ThemeSwitch
 import com.example.wishlistapp_roomdb_compose.ui.theme.WishlistApp_RoomDB_ComposeTheme
 
 @Composable
@@ -56,7 +61,26 @@ fun AppBarView(title: String, onBackNavClicked: () -> Unit) {
         },
         elevation = 4.dp,
         backgroundColor = colorResource(id = R.color.blue),
-        navigationIcon = { navigationIcon() }
+        navigationIcon = { navigationIcon() },
+        actions = {
+
+            var switchState by remember { mutableStateOf(false) }
+
+            ThemeSwitch(
+                isChecked = switchState,
+                width = 108.dp,
+                height = 32.dp,
+                cornerRadius = 25.dp,
+                checkedTrackColor = Color.Transparent,
+                uncheckedTrackColor = Color(0xFFE4F2FF),
+                borderColor = Color.Red,
+                checkedIcon = R.drawable.ic_day_theme,
+                uncheckedIcon = R.drawable.ic_night_theme,
+                onCheckedChange = {
+                    switchState = it
+                }
+            )
+        }
     )
 
 }
